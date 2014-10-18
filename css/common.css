@@ -1,8 +1,4 @@
-#layers {
-	position: relative;
-}
 
-#layers canvas {
-	position: absolute;
-	background-color: transparent;
+canvas {
+	border: solid black 1px;
 }
