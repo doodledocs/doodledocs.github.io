@@ -1,9 +1,10 @@
 <!DOCTYPE HTML>
-<head>
+<html>
     <head>
         <meta charset="utf-8">
         <title>Doodle Doc</title>
         <link href="css/common.css" rel="stylesheet" />
+        <link href="css/main.css" rel="stylesheet" />
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
         <script src='https://cdn.firebase.com/js/client/1.1.1/firebase.js'></script>
         <script src='https://cdnjs.cloudflare.com/ajax/libs/fabric.js/1.4.0/fabric.min.js'></script>
@@ -14,6 +15,62 @@
     </head>
     <body>
     	<div id="tools"></div>
-    	<div id="layers"></div>
+        <div id="bigWrap">
+            <div id="canvasWrap"></div>
+            <div id="actionbar"></div>
+            <div id="tools">
+                <ul>
+                    <li class="toolBar">
+                        <label>
+                            <input type="radio"/>
+                            <img src="foo.png" alt="brush" />
+                        </label>
+                    </li>
+                    <li class="toolBar">
+                        <label>
+                            <input type="radio"/>
+                            <img src="foo.png" alt="shape" />
+                        </label>
+                    </li>
+                    <li class="toolBar">
+                        <label>
+                            <input type="radio"/>
+                            <img src="foo.png" alt="crop" />
+                        </label>
+                    </li>
+                    <li class="toolBar">
+                        <label>
+                            <input type="radio"/>
+                            <img src="foo.png" alt="foo" />
+                        </label>
+                    </li>
+                    <li class="toolBar">
+                        <label>
+                            <input type="radio"/>
+                            <img src="foo.png" alt="bar" />
+                        </label>
+                    </li>
+                    <li class="toolBar">
+                        <label>
+                            <input type="radio"/>
+                            <img src="foo.png" alt="baz" />
+                        </label>
+                    </li>
+                </ul>
+            </div>
+            <div id="layers">
+                <ul>
+                    <li class="layerBar">Layer 1</li>
+                    <li class="layerBar">Layer 2</li>
+                    <li class="layerBar">Layer 3</li>
+                    <li class="layerBar">Layer 4</li>
+                    <li class="layerBar">Layer 5</li>
+                </ul>
+
+                <div id="bigwrap"></div>
+            </div>
+        </div>
+        <div id="canvasWrap">
+        </div>
     </body>
-</head>
+</html>

@@ -8,7 +8,7 @@ var Layers = function(){
 		this.layerNum++;
 		//Create native canvas
 		var canvas = $("<canvas>", {"id":name});
-		$("#layers").append(canvas);
+		$("#canvasWrap").append(canvas);
 		//Create fabricjs wrapper
 		var $layer = new fabric.Canvas(name);
 		this.layersList.push($layer);

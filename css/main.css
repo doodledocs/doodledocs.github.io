@@ -1,0 +1,20 @@
+#tools ul,
+#layers ul {
+	padding:0;
+}
+
+#tools ul li,
+#layers ul li {
+	list-style: none;
+}
+
+#tools{
+	float:left;
+	width: 35px;
+	background-color: grey;
+}
+#layers {
+	float: right;
+	width: 100px;
+}
+
