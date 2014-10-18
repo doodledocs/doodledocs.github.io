@@ -7,9 +7,10 @@ $(document).ready(function() {
 
 	fireUsers = fire.child('users');
 
+	fireUser = fire.child(uuid)
+
 	fireUsers.set({
-		'event': 'newUser',
-		'uuid': uuid
+		'name': uuid
 	});
 
 });
