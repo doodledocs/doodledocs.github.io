@@ -11,17 +11,18 @@ $(document).ready(function() {
 	fireUsers.on('value', function(snapshot){
 		console.log(snapshot.val());
 	});
-	// var json = {};
-	// json['' + uuid] = username;
-
-	// fireUsers.update(json);
 
 
-	// fireUser = fire.child(uuid);
+	/*
+		{ uuid : username }
+	*/
+	var json = {};
+	json['' + uuid] = username;
+	fireUsers.update(json);
 
-	// fireUsers.set({
-	// 	'name': uuid
-	// });
+	fireUsers.on('value', function(snapshot){
+		console.log(snapshot.val());
+	});
 
 });
 
