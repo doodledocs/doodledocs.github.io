@@ -101,5 +101,5 @@ html, body {
 }
 
 #canvasWrap {
-	display: inline-block;
+	overflow: hidden;
 }
