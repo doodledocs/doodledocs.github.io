@@ -34,42 +34,6 @@ var Layers = function(){
 		//This function should be called by any action and should update firebase
 		alert("Need to implement updateLater");
 	}
-
-	function setEvents(object) {
-		var events = ["object:modified", "object:selected", "object:moving", "object:scaling", "object:rotating", "object:added", "object:removed"];
-		rect.on('selected', function() {
-			console.log('selected a rectangle');
-		});
-		/*for (var event in events) {
-			canvas.on(events[event], function(options) {
-				console.log('testing');
-			});		
-
-		}*/
-
-/*		canvas.on('object:modified', function(options) {
-			console.log(options.e.clientX, options.e.clientY);
-		});		
-		canvas.on('object:selected', function(options) {
-			console.log(options.e.clientX, options.e.clientY);
-		});
-		canvas.on('object:moving', function(options) {
-			console.log(options.e.clientX, options.e.clientY);
-		});	
-		canvas.on('object:scaling', function(options) {
-			console.log(options.e.clientX, options.e.clientY);
-		});		
-		canvas.on('object:rotating', function(options) {
-			console.log(options.e.clientX, options.e.clientY);
-		});
-		canvas.on('object:added', function(options) {
-			console.log(options.e.clientX, options.e.clientY);
-		});	
-		canvas.on('object:removed', function(options) {
-			console.log(options.e.clientX, options.e.clientY);
-		});	*/
-	}
-
 }
 
 
