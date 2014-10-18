@@ -30,6 +30,24 @@ function text_toolclick(){
 	standard_options();
 }
 
+function brush_toolclick(layer){
+	var ab = $("#actionbar");
+	ab.empty();
+	var toggle = $("<button>", {id:"toggleDrawingMode"});
+	toggle.html("Toggle Drawing Mode");
+	toggle.on("click", function(){
+		toggleDrawingMode(layer);
+	});
+	ab.append(toggle);
+	ab.append("Pen size:");
+	var pen_size = $("<input>", {id:"brush_size", type:"range", min:1, max:64, value:5, width:64});
+	pen_size.change(function(){
+		layer.canvas.freeDrawingBrush.width = pen_size.val();
+	})
+	ab.append(pen_size);
+	// ab.append()
+}
+
 function standard_options(){
 	var ab = $("#actionbar");
 	ab.append("opacity:");

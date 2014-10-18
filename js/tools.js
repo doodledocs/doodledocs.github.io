@@ -77,6 +77,11 @@ function makeCircle(canvas, options){
     setEvents(circle);
 }
 
+function toggleDrawingMode(layer){
+    var toggle = !layer.canvas.isDrawingMode;
+    console.log("Drawing mode: " + toggle);
+    layer.canvas.isDrawingMode = toggle;
+}
 
 function makeTriangle(canvas, options){
     options["left"] = 200;

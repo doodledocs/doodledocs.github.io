@@ -11,8 +11,15 @@
 
 		// $("input[name='tool'][value='brush']").on("select", )
 		// $("input[name='tool'][value='crop']").on("select", )
-		$("input[name='tool'][value='shape']").change(shapes_toolclick);
-		$("input[name='tool'][value='text']").change(text_toolclick);
+		$("input[name='tool'][value='shape']").change(function(){
+			shapes_toolclick(layers.currentLayer);
+		});
+		$("input[name='tool'][value='text']").change(function(){
+			text_toolclick(layers.currentLayer);
+		});
+		$("input[name='tool'][value='brush']").change(function(){
+			brush_toolclick(layers.currentLayer);
+		});
 		testing();
 	});
 
@@ -26,16 +33,20 @@
 		addImageFromUrl(canvas, "http://api.flattr.com/button/flattr-badge-large.png");
 		uploadImage(canvas);
 		$('#imageUrl').click(function() { addImageFromUrl(canvas, $('#url').val()); });
-		shapes_toolclick(canvas);
+		// shapes_toolclick(canvas);
 		var ab = $("#actionbar");
 		$("body").append($("<button>", {id:"test_button"}));
-
+		$("body").append($("<button>", {id:"drawingmode"}));
+		$("#drawingmode").on("click", function(){
+				toggleDrawingMode(layers.currentLayer);
+			});
 		$("#test_button").on("click", function(){
 			// makeText(canvas, getOptions());
 			makeShape(canvas, getOptions());
 			// alert();
 		});
 		// getOptions();
+		// brush_toolclick(layers.currentLayer);
 	}
 
 

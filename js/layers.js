@@ -15,7 +15,11 @@ var Layers = function(){
 
 		//Create fabricjs wrapper
 		layer.canvas = new fabric.Canvas(layer.layerName);
-		layer.canvas.setDimensions({"height":600,"width":750});
+		layer.canvas.setDimensions({
+			"height":600,
+			"width":750,
+			isDrawingMode:false
+		});
 
 
 		this.layersList.push(layer.canvas);
