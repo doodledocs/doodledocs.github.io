@@ -12,7 +12,7 @@ $(document).ready(function() {
 	*/
 	var json = {};
 	json['' + uuid] = {
-		name : username,
+		'username' : username,
 		layer : 2
 	};
 	fireUsers = fire.child('users');
@@ -21,8 +21,9 @@ $(document).ready(function() {
 	// Get users
 	fireUsers.on('value', function(snapshot){
 		var users = snapshot.val();
-		users.forEach(function(element, index){
-			console.log(element['name']);
+		
+		$.each(users ,function(index, value){
+			console.log(value);
 		});
 	});
 
