@@ -11,7 +11,7 @@ $(document).ready(function() {
 	var json = {};
 	json['' + uuid] = username;
 
-	fireUsers.set(json);
+	fireUsers.update(json);
 
 	// fireUser = fire.child(uuid);
 
