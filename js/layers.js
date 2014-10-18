@@ -3,11 +3,13 @@ var Layers = function(){
 	this.currentLayer = null;
 	this.layersList = [];
 
-	this.createLayer = function(){
+	this.createLayer = function(layerID){
 		var layer = new Layer();
 
 		layer.layerName = "layer" + this.layerNum;
 		this.layerNum++;
+		
+		// layer.layerID = layerID;
 
 		//Create native canvas
 		var canvas = $("<canvas>", {"id":layer.layerName});

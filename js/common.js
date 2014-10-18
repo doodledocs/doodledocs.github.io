@@ -1,12 +1,36 @@
 "use strict";
 
 (function(){
-	var tool = null;
 	var layers = null;
-	var userID = null;
-
-	window.addEventListener("load", function (){
+	// window.addEventListener("load", function (){
+	$(document).ready(function(){
 		layers = new Layers();
+		$('#layers').on('click', 'li:not(.selected)', function(event) {
+			var layerID = $(this).attr('data-layerid');
+			var $liSel = $(this).siblings(".selected");
+			var $imgUser = $liSel.find('img[alt="' + uuid + '"]');
+
+			console.log($imgUser.attr('alt'));
+
+			$liSel.removeClass('selected');
+
+			$(this).addClass('selected');
+
+			var $usersIconWrap = $(this).find('.usersIconWrap');
+
+			$imgUser.appendTo($usersIconWrap);
+
+			var fireUsers = fire.child('users');
+
+			var fireCurUser = fireUsers.child('' + uuid);
+
+			fireCurUser.update({
+				layer : layerID
+			});
+
+			// layers.currentLayer = layers.createLayer(layerID);
+
+		});
 		layers.currentLayer = layers.createLayer();
 		shape_click(layers);
 		$("input[name='tool']").change(function(){
@@ -22,8 +46,15 @@
 					shape_click(layers);
 					shapes_toolclick(layers.currentLayer);
 					break;
+				case "eraser":
+					erase_toolclick(layers.currentLayer);
+					break;
+				case "filters":
+					filters_toolclick(layers.currentLayer);
+					break;
 			}
 		})
+		
 		testing();
 	});
 

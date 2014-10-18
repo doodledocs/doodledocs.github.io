@@ -10,6 +10,26 @@ function shapes_toolclick(){
 	standard_options();
 }
 
+function erase_toolclick(layer){
+	var ab = $("#actionbar");
+	ab.empty();
+	var remove = $("<button>", {id:"remove"});
+	remove.html("Erase Selected Object");
+	remove.on("click", function(){
+		var object = layer.canvas.getActiveObject();
+		if(object != undefined){
+			layer.canvas.remove(object);
+		}
+	});
+	ab.append(remove);
+	var eraseAll = $("<button>", {id:"eraseAll"});
+	eraseAll.html("Erase All Objects");
+	eraseAll.on("click", function(){
+		layer.canvas.clear();
+	});
+	ab.append(eraseAll);
+}
+
 function text_toolclick(){
 	var ab = $("#actionbar");
 	ab.empty();
@@ -56,6 +76,27 @@ function brush_toolclick(layer){
 		layer.canvas.freeDrawingBrush.color = color;
 	})
 	ab.append(pen_color);
+}
+
+function filters_toolclick(layer){
+	var ab = $("#actionbar");
+	ab.empty();
+
+	//Filters
+	var group = $("<select>", {id:"filter_type"});													//Color Type Selection (Fill/Gradient/None)
+	group.append($("<option>Grayscale</option>", {value:"Grayscale"}));
+	group.append($("<option>Sepia</option>", {value:"Sepia"}));
+	group.append($("<option>Pixelate</option>", {value:"Pixelate"}));
+	group.append($("<option>Noise</option>", {value:"Noise"}));
+	ab.append(group);
+
+	var apply = $("<button>", {id:"apply_filters"});
+	apply.html("Apply filter to selected");
+	apply.on("click", function(){
+		prepareFilter(layer);
+	});
+	ab.append(apply);
+
 }
 
 function standard_options(){
