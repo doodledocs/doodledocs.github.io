@@ -1,3 +1,7 @@
+#tools, #layers {
+	height: 100%;
+}
+
 #tools ul,
 #layers ul {
 	padding:0;
@@ -13,6 +17,7 @@
 	width: 35px;
 	background-color: grey;
 }
+
 #layers {
 	float: right;
 	width: 100px;
@@ -21,4 +26,8 @@
 .toolBar img {
 	width:35px;
 	height: 35px;
+}
+
+#canvasWrap {
+	display: inline-block;
 }
