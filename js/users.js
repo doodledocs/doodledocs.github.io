@@ -17,12 +17,15 @@ $(document).ready(function() {
 			firstTimeLayers = false;
 			var dLayers = snapshot.val();
 
-			
+			$('#layers ul').html("");
 
 			$.each(dLayers ,function(layerID, dLayer){
-				var dLayerName = dLayer.name;
-				var $curLayer = createLayer(dLayerName, layerID);
-				
+				// var liSize = $('#layers ul li[data-layerid="' + layerID + '"]').length;
+
+				// if (!liSize){
+					var dLayerName = dLayer.name;
+					var $curLayer = createLayer(dLayerName, layerID);
+				// }
 			});
 		// }
 	});
@@ -53,15 +56,23 @@ $(document).ready(function() {
 		});
 	}, 500);
 
-	fireUsers.on('child_added', function(snapshot) {
-		var changedPost = snapshot.val();
-		var layerID = changedPost.layer;
-		var changedUUID = changedPost.uuid;
-		// var nameIt = changedPost.name();
+	// fireUsers.on('child_added', function(snapshot) {
+	// 	var changedPost = snapshot.val();
+	// 	var layerID = changedPost.layer;
+	// 	var changedUUID = changedPost.uuid;
+	// 	// var nameIt = changedPost.name();
 
-		console.log("uuid changed" + changedPost.uuid);
-	});
+	// 	console.log("uuid changed" + changedPost.uuid);
+	// });
 
+	// fireLayers.on('child_added', function(snapshot) {
+	// 	var changedPost = snapshot.val();
+	// 	var layerID = changedPost.layer;
+	// 	var changedUUID = changedPost.uuid;
+	// 	// var nameIt = changedPost.name();
+
+	// 	console.log("uuid changed" + changedPost.uuid);
+	// });
 });
 
 function getUsers(snapshot, fireUsers) {
@@ -77,6 +88,7 @@ function getUsers(snapshot, fireUsers) {
 				});
 			}, 500);
 		} else {
+			$('usersIconWrap img').remove();
 			$.each(users ,function(index, user){
 				
 				var curUsername = user.username;
@@ -89,10 +101,9 @@ function getUsers(snapshot, fireUsers) {
 
 					var $curULayerBarIcons = $('.layerBar[data-layerid="' + curULayer + '"] .usersIconWrap');
 					
-					var exist = $curULayerBarIcons.find('img').length;
-					console.log('exists' + exist);
+					// var exist = $curULayerBarIcons.find('img').length;
 
-					if (!exist){
+					// if (!exist){
 					
 						if (index == uuid){
 							var $curULayerBar = $('.layerBar[data-layerid="' + curULayer + '"]');
@@ -100,7 +111,7 @@ function getUsers(snapshot, fireUsers) {
 						}
 	
 						$curULayerBarIcons.append($img);
-					}
+					// }
 				// }
 			});
 		}
