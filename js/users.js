@@ -2,6 +2,7 @@ var uuid;
 var fire = new Firebase('https://blinding-torch-9495.firebaseio.com/');
 var firstTimeUsers = true;
 var firstTimeLayers = true;
+var currentLayerID;
 
 $(document).ready(function() {
 	// generate UUID & Username
@@ -36,7 +37,8 @@ $(document).ready(function() {
 						});
 
 	var postLayerID = newUserLayerID.name();
-
+	
+	currentLayerID = postLayerID;
 	/*
 		{ uuid : username }
 	*/

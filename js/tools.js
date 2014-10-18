@@ -122,6 +122,8 @@ function setEvents(object) {
 	for (var event in events) {
 		object.on(events[event], function() {
             console.log(object);
+
+            console.log(layers.currentLayer.layerID);
 		});
 	}
 }

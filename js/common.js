@@ -5,6 +5,7 @@ var layers = null;
 	// window.addEventListener("load", function (){
 	$(document).ready(function(){
 		layers = new Layers();
+
 		$('#layers').on('click', 'li:not(.selected)', function(event) {
 			var layerID = $(this).attr('data-layerid');
 			var $liSel = $(this).siblings(".selected");
@@ -30,7 +31,8 @@ var layers = null;
 			this.layers.currentLayer.layerID = layerID;
 
 		});
-		layers.currentLayer = layers.createLayer();
+
+		layers.currentLayer = layers.createLayer(currentLayerID);
 		shape_click(layers);
 		$("input[name='tool']").change(function(){
 			// var value = $(this).val();
