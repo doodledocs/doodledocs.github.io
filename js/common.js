@@ -5,27 +5,6 @@
 	// window.addEventListener("load", function (){
 	$(document).ready(function(){
 		layers = new Layers();
-		layers.currentLayer = layers.createLayer();
-		shape_click(layers);
-		$("input[name='tool']").change(function(){
-			// var value = $(this).val();
-			switch ($(this).val()){
-				case "brush":
-					brush_toolclick(layers.currentLayer);
-					break;
-				case "text":
-					text_toolclick(layers.currentLayer);
-					break;
-				case "shape":
-					shape_click(layers);
-					shapes_toolclick(layers.currentLayer);
-					break;
-				case "eraser":
-					erase_toolclick(layers.currentLayer);
-					break;
-			}
-		})
-
 		$('#layers').on('click', 'li:not(.selected)', function(event) {
 			var layerID = $(this).attr('data-layerid');
 			var $liSel = $(this).siblings(".selected");
@@ -49,7 +28,29 @@
 				layer : layerID
 			});
 
+			layers.currentLayer = layers.createLayer(layerID);
+
 		});
+		
+		shape_click(layers);
+		$("input[name='tool']").change(function(){
+			// var value = $(this).val();
+			switch ($(this).val()){
+				case "brush":
+					brush_toolclick(layers.currentLayer);
+					break;
+				case "text":
+					text_toolclick(layers.currentLayer);
+					break;
+				case "shape":
+					shape_click(layers);
+					shapes_toolclick(layers.currentLayer);
+					break;
+				case "eraser":
+					erase_toolclick(layers.currentLayer);
+					break;
+			}
+		})
 		
 		testing();
 	});
