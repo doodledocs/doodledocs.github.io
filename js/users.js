@@ -2,26 +2,28 @@ var uuid;
 var fire = new Firebase('https://blinding-torch-9495.firebaseio.com/');
 
 $(document).ready(function() {
+	// generate UUID & Username
 	uuid = generateUUID();
 	console.log(uuid);
 	var username = 'User ' + uuid;
-
-	fireUsers = fire.child('users');
-
-	fireUsers.on('value', function(snapshot){
-		console.log(snapshot.val());
-	});
-
 
 	/*
 		{ uuid : username }
 	*/
 	var json = {};
-	json['' + uuid] = username;
+	json['' + uuid] = {
+		name : username,
+		layer : 2;
+	};
+	fireUsers = fire.child('users');
 	fireUsers.update(json);
 
+	// Get users
 	fireUsers.on('value', function(snapshot){
-		console.log(snapshot.val());
+		var users = snapshot.val();
+		users.forEach(function(element, index){
+			console.log(element['name']);
+		});
 	});
 
 });
