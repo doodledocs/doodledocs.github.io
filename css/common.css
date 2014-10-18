@@ -2,3 +2,8 @@
 canvas {
 	border: solid black 1px;
 }
+
+#actionbar {
+	border: solid black 1px;
+	height:; 30px;
+}
