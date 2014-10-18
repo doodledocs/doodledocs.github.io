@@ -1,5 +1,6 @@
 var Layers = function(){
 	this.layerNum = 1;
+	this.currentLayer = null;
 	this.layersList = [];
 
 	this.createLayer = function(){
@@ -10,6 +11,8 @@ var Layers = function(){
 		$("#layers").append(canvas);
 		//Create fabricjs wrapper
 		var $layer = new fabric.Canvas(name);
+		this.layersList.push($layer);
+		this.currentLayer = $layer;
 		
 		console.log($layer);
 		//Send layer to firebase
