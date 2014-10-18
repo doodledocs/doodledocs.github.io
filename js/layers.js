@@ -12,11 +12,11 @@ var Layers = function(){
 		layer.layerID = layerID;
 
 		//Create native canvas
-		var canvas = $("<canvas>", {"id":layer.layerName});
+		var canvas = $("<canvas>", {"id":layer.layerID});
 		$("#canvasWrap").append(canvas);
 
 		//Create fabricjs wrapper
-		layer.canvas = new fabric.Canvas(layer.layerName);
+		layer.canvas = new fabric.Canvas(layer.layerID);
 		layer.canvas.setDimensions({
 			"height":600,
 			"width":750,

@@ -68,7 +68,6 @@ var layers = null;
 		canvas.on('mouse:down', function(options) {
   			console.log(options.e.clientX, options.e.clientY);
 		});
-		// var options = {opacity: 1.0, angle: "0", fill: "#000000", height: "1", width: "1"};
 		// makeRect(canvas, options);
 		// makeText(canvas, 20, 20, "brown", 13, "Hello World", "Arial", "bold", 0.5);
 		// shapes_toolclick(canvas);
@@ -97,22 +96,41 @@ var layers = null;
 		// getOptions();
 		// brush_toolclick(layers.currentLayer);
 	}
+		var options = {opacity: 1.0, angle: "0", fill: "#000000", height: "100", width: "100"};
 
 
 	var fEvents = fire.child('events');
-
 	fEvents.on('child_added', function(snapshot) {
-		var eventE = snapshot.val();
-		var eObj = eventE.object;
-		var eLayerID = eventE.layerID;
-
-		console.log(eObj);
-		console.log(eLayerID);
+		var nLayerList = snapshot.val();
+		// console.log(eObj);
+		// console.log(eLayerID);
 
 		// layers.currentLayer.canvas.loadFromJSON(eObj);
+		// $("#canvasWrap").html("");
+		console.log('test');
+		console.log(nLayerList);
 		var canvas = new fabric.Canvas();
+		options['top'] = parseInt(nLayerList[1]);
+		options['left'] = parseInt(nLayerList[0]);
+		console.log(options);
+		makeRect(canvas, options)
+		console.log(canvas);
+		//canvas.loadFromJSON(nLayerList, function() { console.log('please work');});
 
-		layers.layerList[eLayerID] = canvas.loadFromJSON(eObj);
+		// $.each(nLayerList, function(index, val){
+		// 	console.log("received index: " + index);
+		// 	console.log(val);
+
+		// 	// var layer = new Layer();
+
+		// 	// var canvas = $("<canvas>", {"id":index});
+		// 	// $("#canvasWrap").append(canvas);
+		// 	// layer.canvas = new fabric.Canvas(index);
+		// 	// layer.canvas.loadFromJSON(val);
+		// });
+
+
+
 	});
 
 

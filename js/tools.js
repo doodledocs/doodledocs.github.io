@@ -127,12 +127,16 @@ function setEvents(object) {
 
             var fEvents = fire.child('events');
 
-            var jsonBlah = JSON.stringify(layers.currentLayer.canvas);
-
-            fEvents.push({
-                'layerID' :  currentLayerID,
-                'object' : jsonBlah
-            })
+            var jsonBlah = layers.layersList;
+            var test = [object.top, object.width];
+            console.log(test);
+            // fEvents.push({
+            //     'layerID' :  currentLayerID,
+            //     'object' : jsonBlah
+            // })
+            var foo = JSON.stringify(layers.currentLayer.canvas);
+            // var baz = {canvas : foo};
+            fEvents.push(test);
 		});
 	}
 }
