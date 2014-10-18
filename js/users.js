@@ -74,7 +74,7 @@ function getUsers(snapshot, fireUsers) {
 					var curULayer = user.layer;
 					var $img = $('<img>');
 					$img.attr('src', 'img/ppl/purple_person.png');
-					$img.attr('alt', uuid);
+					$img.attr('alt', index);
 
 					var $curULayerBarIcons = $('.layerBar[data-layerid="' + curULayer + '"] .usersIconWrap');
 					
