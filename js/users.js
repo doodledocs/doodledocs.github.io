@@ -11,7 +11,7 @@ $(document).ready(function() {
 	var json = {};
 	json[uuid] = uuid;
 
-	fireUsers.push({
+	fireUsers.set({
 		uuid: json
 	});
 
