@@ -50,16 +50,51 @@ html, body {
 
 #layers {
 	float: right;
-	width: 100px;
+	width: 233px;
 }
 
 	#layers ul li {
 		list-style: none;
-		padding: 10px 20px;
+		height: 56px;
+		line-height: 56px;
+		padding-left: 10px;
 		background-color: lightgrey;
+		position: relative;
 	}
 
-.toolBar img, #linkUpload img {
+
+		#layers a {
+			display: block;
+			text-decoration: none;
+			color: inherit;
+			height: 100%;
+		}
+
+		#layers li img {
+			width: 20px;
+			height:20px;
+			margin-top: 18px;
+			margin-left: 5px;
+			float: right;
+		}
+
+		.usersIconWrap {
+			position:absolute;
+			right:0;
+			top:0;
+			height: 100px;
+			width: 213px;
+			padding-right: 20px;
+			height: 100%;
+		}
+
+		#layers li p {
+			margin: 0;
+		}
+
+
+
+.toolBar img, #linkUpload img  {
 	width:35px;
 	height: 35px;
 }

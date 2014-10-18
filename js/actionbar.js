@@ -14,6 +14,7 @@ function shapes_toolclick(){
 
 function text_toolclick(){
 	var ab = $("#actionbar");
+	ab.empty();
 	ab.append("size:");
 	ab.append($("<input>", {name:"size", type:"number", value:12, width:30}));		//Size
 	var group = $("<select>", {id:"font_selection"});								//Font Selection
@@ -26,6 +27,7 @@ function text_toolclick(){
 	group.append($("<option>Bold</option>", {value:"Bold"}));
 	group.append($("<option>Italic</option>", {value:"Italic"}));
 	ab.append(group);
+	standard_options();
 }
 
 function standard_options(){

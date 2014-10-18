@@ -21,49 +21,54 @@ function getOptions(){
         options["height"] = $('[name="height"]').val();
         options["width"] = $('[name="width"]').val();
     }
+    if($("#font_selection").val() != undefined){
+        options["fontFamily"] = $("#font_selection").val();
+    }
+    if($("#fontstyle_selection").val() != undefined){
+       options["fontStyle"] = $("#fontstyle_selection").val();
+    }
 
     console.log(options);
     return options;
 }
 
-function makeShape(layer){
+function makeShape(canvas){
     // console.log($("#selected_shape").val());
     switch($("#selected_shape").val()){
         case "Circle":
-            makeCircle(layer, getOptions());
+            makeCircle(canvas, getOptions());
             break;
         case "Triangle":
-            makeTriangle(layer, getOptions());
+            makeTriangle(canvas, getOptions());
             break;
         case "Rectangle":
-            makeRect(layer, getOptions());
+            makeRect(canvas, getOptions());
     }
 }
 
 function popup(canvas) {
-    console.log('test');
     var modal = picoModal({content: "<label>Image File:</label><br/><input type='file' id='imageLoader' name='imageLoader'/><input type='text' id='url' placeholder='Submit URL' /><button id='imageUrl'>Go</button>",
         overlayClose: true});
-        console.log(modal);
         modal.afterCreate(function(mod) { 
             uploadImage(canvas, modal);
             $('#imageUrl').click(function() { 
-                console.log('testing');
                 addImageFromUrl(canvas, $('#url').val());
-                console.log('this is');
-                console.log(this);
+
                 modal.close();
             });
         });
         modal.show();
 }
 
-function makeRect(layer, options){
+function makeRect(canvas, options){
     options["left"] = 200;
     options["top"] = 100;
+    options["height"] = 110;
+    options["width"] = 210;
+
     console.log(options);
     var rect = new fabric.Rect(options);
-    layer.add(rect);
+    canvas.add(rect);
     setEvents(rect);
 }
 
@@ -76,36 +81,28 @@ function setEvents(object) {
 	}
 }
 
-function makeCircle(layer, options){
+function makeCircle(canvas, options){
     options["left"] = 100;
     options["top"] = 50;
     console.log(options);
     var circle = new fabric.Circle(options);
-    layer.add(circle);
+    canvas.add(circle);
     setEvents(circle);
 }
 
 
-function makeTriangle(layer, options){
+function makeTriangle(canvas, options){
     options["left"] = 200;
     options["top"] = 50;
     console.log(options);
     var triangle = new fabric.Triangle(options);
-    layer.add(triangle);
+    canvas.add(triangle);
     setEvents(triangle);
 }
 
-function makePolygon(){
-
-}
-
-function makeLine(){
-
-}
-
-function addImageFromUrl(layer, url) {
+function addImageFromUrl(canvas, url) {
     fabric.Image.fromURL(url, function(oImg) {
-      layer.add(oImg);
+      canvas.add(oImg);
     });
 }
 
@@ -125,19 +122,11 @@ function uploadImage(canvas, modal) {
     }
 }
 
-function makeText(layer, left, top, fill, size, string, fontFamily, style, opacity){
-    fill = typeof fill !== 'undefined' ? fill : null;
-    opacity = typeof opacity !== 'undefined' ? opacity : 1.0;
-    
-    var text = new fabric.Text(string, {
-        left: left,
-        top: top,
-        fill: fill,
-        fontFamily: fontFamily,
-        fontSize: size,
-        fontStyle: style,
-        opacity: opacity
-    });
-    layer.add(text);
+function makeText(canvas, string, options){
+    string = "Noob";
+    options["left"] = 200;
+    options["top"] = 50;
+    var text = new fabric.Text(string, options);
+    canvas.add(text);
     setEvents(text);
 }
