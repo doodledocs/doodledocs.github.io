@@ -54,7 +54,7 @@ $(document).ready(function() {
 			$.each(users ,function(index, user){
 				var curUsername = user.username;
 
-				if (index != uuid) {
+				// if (index != uuid) {
 					var curULayer = user.layer;
 					var $img = $('<img>');
 					$img.attr('src', 'img/ppl/purple_person.png');
@@ -62,7 +62,7 @@ $(document).ready(function() {
 
 					var $curULayerBar = $('.layerBar[data-layerid="' + curULayer + '"] .usersIconWrap');
 					$curULayerBar.append($img);
-				}
+				// }
 			});
 		}
 	});
@@ -95,7 +95,7 @@ function createLayer(dLayerName, uLayerID){
 	$anchor.append($div);
 	$nLayer.append($anchor);
 
-	$('#layers ul').append($nLayer);
+	$('#layers ul').prepend($nLayer);
 	console.log('adding');
 
 	return $nLayer;
