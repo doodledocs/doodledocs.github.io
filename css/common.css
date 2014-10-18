@@ -1,0 +1,8 @@
+#layers {
+	position: relative;
+}
+
+#layers canvas {
+	position: absolute;
+	background-color: transparent;
+}
