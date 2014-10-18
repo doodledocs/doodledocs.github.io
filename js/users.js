@@ -13,7 +13,7 @@ $(document).ready(function() {
 
 	// Get All layers
 	fireLayers.on('value', function(snapshot){
-		if (firstTimeLayers) {
+		// if (firstTimeLayers) {
 			firstTimeLayers = false;
 			var dLayers = snapshot.val();
 
@@ -24,7 +24,7 @@ $(document).ready(function() {
 				var $curLayer = createLayer(dLayerName, layerID);
 				
 			});
-		}
+		// }
 	});
 
 	var layerName = 'Layer ' + generateLayerName();
@@ -52,10 +52,18 @@ $(document).ready(function() {
 		});
 	}, 500);
 
+	fireUsers.on('child_added', function(snapshot) {
+		var changedPost = snapshot.val();
+		layerID = changedPost.layer;
+		// var nameIt = changedPost.name();
+
+		console.log('layerID ' + layerID);
+	});
+
 });
 
 function getUsers(snapshot, fireUsers) {
-	if (firstTimeUsers) {
+	// if (firstTimeUsers) {
 		firstTimeUsers = false;
 		var users = snapshot.val();
 		
@@ -68,6 +76,7 @@ function getUsers(snapshot, fireUsers) {
 			}, 500);
 		} else {
 			$.each(users ,function(index, user){
+				
 				var curUsername = user.username;
 
 				// if (index != uuid) {
@@ -78,17 +87,22 @@ function getUsers(snapshot, fireUsers) {
 
 					var $curULayerBarIcons = $('.layerBar[data-layerid="' + curULayer + '"] .usersIconWrap');
 					
+					var exist = $curULayerBarIcons.find('img').length;
+					console.log('exists' + exist);
 
-					if (index == uuid){
-						var $curULayerBar = $('.layerBar[data-layerid="' + curULayer + '"]');
-						$curULayerBar.addClass('selected');
+					if (!exist){
+					
+						if (index == uuid){
+							var $curULayerBar = $('.layerBar[data-layerid="' + curULayer + '"]');
+							$curULayerBar.addClass('selected');
+						}
+	
+						$curULayerBarIcons.append($img);
 					}
-
-					$curULayerBarIcons.append($img);
 				// }
 			});
 		}
-	}
+	// }
 }
 
 // fire.on('child_added', function(snapshot) {
