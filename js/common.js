@@ -15,7 +15,9 @@
 		var canvas = layers.currentLayer;
 		// create a rectangle object
 		makeRect(canvas,100,100,20,20,'red');
-		makeCircle(canvas,100,100,30,'blue');
+		makeRect(canvas,100,100,20,20); //No fill
+		makeCircle(canvas,200,100,15,'blue');
+		makeTriangle(canvas,150,30,20,20,'green');
 	}
 
 
