@@ -7,7 +7,7 @@ $(document).ready(function() {
 
 	fireUsers = fire.child('users');
 
-	fireUser = fire.child(uuid)
+	fireUser = fire.child(uuid);
 
 	fireUsers.set({
 		'name': uuid
@@ -15,10 +15,10 @@ $(document).ready(function() {
 
 });
 
-fire.on('child_added', function(snapshot) {
-	var message = snapshot.val();
-	displayChatMessage(message.name, message.text);
-});
+// fire.on('child_added', function(snapshot) {
+// 	var message = snapshot.val();
+// 	displayChatMessage(message.name, message.text);
+// });
 
 function generateUUID(){
     var d = new Date().getTime();
