@@ -8,10 +8,11 @@ $(document).ready(function() {
 
 	fireUsers = fire.child('users');
 
-	fireUsers.set({
-		uuid: {
-			name: username
-		}
+	var json = {};
+	json[uuid] = uuid;
+
+	fireUsers.push({
+		uuid: json
 	});
 
 	// fireUser = fire.child(uuid);
