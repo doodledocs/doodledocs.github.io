@@ -124,6 +124,13 @@ function setEvents(object) {
             console.log(object);
 
             console.log(layers.currentLayer.layerID);
+
+            fire.child('events');
+
+            fire.push({
+                'layerID' :  currentLayerID,
+                'object' : object
+            })
 		});
 	}
 }
