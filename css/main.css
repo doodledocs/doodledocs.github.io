@@ -1,24 +1,54 @@
-#tools ul,
-#layers ul {
-	padding:0;
+html, body {
+	margin:0;
+	padding: 0;
 }
 
-#tools ul li,
-#layers ul li {
-	list-style: none;
+#actionbar {
+	width: 100%;
+	height: 30px;
+	background: grey;
 }
+
+#tools, #layers {
+	height: 100%;
+}
+
+	#tools ul,
+	#layers ul {
+		padding:0;
+	}
+
+	#tools ul li,
+	#layers ul li {
+		list-style: none;
+	}
 
 #tools{
 	float:left;
 	width: 35px;
 	background-color: grey;
 }
+
+	#tools img:hover{
+		cursor: pointer;
+	}
+
 #layers {
 	float: right;
 	width: 100px;
 }
 
+	#layers ul li {
+		list-style: none;
+		padding: 10px 20px;
+		background-color: lightgrey;
+	}
+
 .toolBar img {
 	width:35px;
 	height: 35px;
+}
+
+#canvasWrap {
+	display: inline-block;
 }

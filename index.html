@@ -3,49 +3,49 @@
     <head>
         <meta charset="utf-8">
         <title>Doodle Doc</title>
-        <link href="css/common.css" rel="stylesheet" />
-        <link href="css/main.css" rel="stylesheet" />
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
         <script src='https://cdn.firebase.com/js/client/1.1.1/firebase.js'></script>
         <script src='https://cdnjs.cloudflare.com/ajax/libs/fabric.js/1.4.0/fabric.min.js'></script>
-        
+        <script src='js/users.js'></script>
+        <script src='js/actionbar.js'></script>
         <script src='js/layers.js'></script>
         <script src='js/tools.js'></script>
         <script src='js/common.js'></script>
-        <script src="js/dropzone.js"></script>
-        <script type="text/javascript" src="js/upload.js"></script>
+
+
+        <link href="css/common.css" rel="stylesheet" />
+        <link href="css/main.css" rel="stylesheet" />
     </head>
     <body>
-    <label>Image File:</label><br/>
-    <input type="file" id="imageLoader" name="imageLoader"/>
-    <input type='text' id='url' />
-    <button id='imageUrl'></button>
-    	<div id="tools"></div>
+        <label>Image File:</label><br/>
+        <input type="file" id="imageLoader" name="imageLoader"/>
+        <input type='text' id='url' />
+        <button id='imageUrl'></button>
         <div id="bigWrap">
             <div id="actionbar"></div>
             <div id="tools">
                 <ul>
                     <li class="toolBar">
                         <label>
-                            <input type="radio"/>
+                            <input type="radio" name="tool" value="brush"/>
                             <img src="img/icons/brush.png" alt="brush" />
                         </label>
                     </li>
                     <li class="toolBar">
                         <label>
-                            <input type="radio"/>
+                            <input type="radio" name="tool" value="crop"/>
                             <img src="img/icons/crop.png" alt="crop" />
                         </label>
                     </li>
                     <li class="toolBar">
                         <label>
-                            <input type="radio"/>
+                            <input type="radio" name="tool" value="shape" checked/>
                             <img src="img/icons/shape.png" alt="shape" />
                         </label>
                     </li>
                     <li class="toolBar">
                         <label>
-                            <input type="radio"/>
+                            <input type="radio" name="tool" value="text"/>
                             <img src="img/icons/text.png" alt="text" />
                         </label>
                     </li>
