@@ -50,7 +50,7 @@ $(document).ready(function() {
 		fireUsers.on('value', function(snapshot){
 			getUsers(snapshot);
 		});
-	}, 300);
+	}, 500);
 
 });
 
@@ -65,7 +65,7 @@ function getUsers(snapshot, fireUsers) {
 				fireUsers.on('value', function(snapshot){
 					getUsers(snapshot);
 				});
-			}, 300);
+			}, 500);
 		} else {
 			$.each(users ,function(index, user){
 				var curUsername = user.username;
