@@ -3,12 +3,27 @@ html, body {
 	padding: 0;
 }
 
-#actionbar {
+#actionbar, #linkUpload {
 	width: 100%;
-	height: 30px;
+	height: 35px;
 	background: grey;
 }
 
+#linkUpload {
+	float:left;
+}
+
+#pushNotify {
+	float:right;
+}
+
+/*#pushNotify {
+	border:none;
+	width:;
+	background-image: url(/img/icons/import_photo.png);
+
+}
+*/
 #tools, #layers {
 	height: 100%;
 }
@@ -29,7 +44,7 @@ html, body {
 	background-color: grey;
 }
 
-	#tools img:hover{
+	#tools img:hover, #linkUpload img:hover{
 		cursor: pointer;
 	}
 
@@ -44,7 +59,7 @@ html, body {
 		background-color: lightgrey;
 	}
 
-.toolBar img {
+.toolBar img, #linkUpload img {
 	width:35px;
 	height: 35px;
 }

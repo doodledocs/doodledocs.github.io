@@ -40,6 +40,23 @@ function makeShape(layer){
     }
 }
 
+function popup(canvas) {
+    console.log('test');
+    var modal = picoModal({content: "<label>Image File:</label><br/><input type='file' id='imageLoader' name='imageLoader'/><input type='text' id='url' placeholder='Submit URL' /><button id='imageUrl'>Go</button>",
+        overlayClose: true});
+        console.log(modal);
+        modal.afterCreate(function(mod) { 
+            uploadImage(canvas, modal);
+            $('#imageUrl').click(function() { 
+                console.log('testing');
+                addImageFromUrl(canvas, $('#url').val());
+                console.log('this is');
+                console.log(this);
+                modal.close();
+            });
+        });
+        modal.show();
+}
 
 function makeRect(layer, options){
     options["left"] = 200;
@@ -92,11 +109,13 @@ function addImageFromUrl(layer, url) {
     });
 }
 
-function uploadImage(canvas) {
+function uploadImage(canvas, modal) {
     var imageLoader = document.getElementById('imageLoader');
-    imageLoader.addEventListener('change', handleImage, false);
-
+    if (imageLoader) {
+        imageLoader.addEventListener('change', handleImage, false);
+    }
     function handleImage(e){
+        modal.close()
         var reader = new FileReader();
         reader.onload = function(event){
             var img = new Image();

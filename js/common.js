@@ -20,7 +20,7 @@
 		makeText(canvas, 20, 20, "brown", 13, "Hello World", "Arial", "bold", 0.5);
 		addImageFromUrl(canvas, "http://api.flattr.com/button/flattr-badge-large.png");
 		uploadImage(canvas);
-		$('#imageUrl').click(function() { addImageFromUrl(canvas, $('#url').val()); });
+		$('#pushNotify').click(function() { popup(canvas); });
 		shapes_toolclick(canvas);
 		var ab = $("#actionbar");
 		ab.append($("<button>", {id:"test_button"}));
