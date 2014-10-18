@@ -46,6 +46,39 @@ function shape_click(layers){
     });
 }
 
+function prepareFilter(layer){
+    var filter = $("#filter_type").val();
+    console.log("Applying: " + filter);
+    var filter = null;
+    switch(filter){
+        case "Sepia":
+            filter = new fabric.Image.filters.Sepia({
+                noise: 2000
+            });
+            break;
+        case "Grayscale":
+            filter = new fabric.Image.filters.Grayscale();
+            break;
+        case "Noise":
+            filter = new fabric.Image.filters.Noise();
+            break;
+        case "Pixelate":
+            filter = new fabric.Image.filters.Pixelate({
+                blocksize: 100
+            });
+            break;
+    }
+    applyFilter(layer, filter);
+}
+
+function applyFilter(layer, filter){
+    var object = layer.canvas.getActiveObject();
+    console.log(object);
+    object.filters.push(filter);
+    object.applyFilters(layer.canvas.renderAll.bind(layer.canvas));
+    layer.canvas.add(object);
+}
+
 function makeShape(canvas, posX, posY){
     switch($("#selected_shape").val()){
         case "Circle":

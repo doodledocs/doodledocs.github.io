@@ -28,10 +28,10 @@
 				layer : layerID
 			});
 
-			layers.currentLayer = layers.createLayer(layerID);
+			// layers.currentLayer = layers.createLayer(layerID);
 
 		});
-		
+		layers.currentLayer = layers.createLayer();
 		shape_click(layers);
 		$("input[name='tool']").change(function(){
 			// var value = $(this).val();
@@ -48,6 +48,9 @@
 					break;
 				case "eraser":
 					erase_toolclick(layers.currentLayer);
+					break;
+				case "filters":
+					filters_toolclick(layers.currentLayer);
 					break;
 			}
 		})

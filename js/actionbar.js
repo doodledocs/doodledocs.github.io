@@ -78,6 +78,27 @@ function brush_toolclick(layer){
 	ab.append(pen_color);
 }
 
+function filters_toolclick(layer){
+	var ab = $("#actionbar");
+	ab.empty();
+
+	//Filters
+	var group = $("<select>", {id:"filter_type"});													//Color Type Selection (Fill/Gradient/None)
+	group.append($("<option>Grayscale</option>", {value:"Grayscale"}));
+	group.append($("<option>Sepia</option>", {value:"Sepia"}));
+	group.append($("<option>Pixelate</option>", {value:"Pixelate"}));
+	group.append($("<option>Noise</option>", {value:"Noise"}));
+	ab.append(group);
+
+	var apply = $("<button>", {id:"apply_filters"});
+	apply.html("Apply filter to selected");
+	apply.on("click", function(){
+		prepareFilter(layer);
+	});
+	ab.append(apply);
+
+}
+
 function standard_options(){
 	var ab = $("#actionbar");
 	ab.append("opacity:");
