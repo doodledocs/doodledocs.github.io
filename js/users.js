@@ -40,7 +40,8 @@ $(document).ready(function() {
 	var json = {};
 	json['' + uuid] = {
 		'username' : username,
-		layer : postLayerID
+		layer : postLayerID,
+		'uuid' : uuid
 	};
 	fireUsers = fire.child('users');
 	fireUsers.update(json);
@@ -54,10 +55,11 @@ $(document).ready(function() {
 
 	fireUsers.on('child_added', function(snapshot) {
 		var changedPost = snapshot.val();
-		layerID = changedPost.layer;
+		var layerID = changedPost.layer;
+		var changedUUID = changedPost.uuid;
 		// var nameIt = changedPost.name();
 
-		console.log('layerID ' + layerID);
+		console.log("uuid changed" + changedPost.uuid);
 	});
 
 });
