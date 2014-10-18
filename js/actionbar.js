@@ -6,10 +6,8 @@ function shapes_toolclick(){
 	group.append($("<option>Triangle</option>", {value:"Triangle"}));
 	group.append($("<option>Rectangle</option>", {value:"Rectangle"}));
 	ab.append(group);
-	group.on("change", update_shape_tool);
-	ab.append($("<span>", {id:"shape_options"}));
+	// group.on("change", update_shape_tool);
 	standard_options();
-	update_shape_tool();
 }
 
 function text_toolclick(){
@@ -33,19 +31,31 @@ function text_toolclick(){
 function brush_toolclick(layer){
 	var ab = $("#actionbar");
 	ab.empty();
+
+	//Drawing mode
 	var toggle = $("<button>", {id:"toggleDrawingMode"});
 	toggle.html("Toggle Drawing Mode");
 	toggle.on("click", function(){
 		toggleDrawingMode(layer);
 	});
 	ab.append(toggle);
+
+	//Pen size
 	ab.append("Pen size:");
 	var pen_size = $("<input>", {id:"brush_size", type:"range", min:1, max:64, value:5, width:64});
 	pen_size.change(function(){
 		layer.canvas.freeDrawingBrush.width = pen_size.val();
 	})
 	ab.append(pen_size);
-	// ab.append()
+	
+	//Pen color
+	var pen_color = $("<input>", {id:"pen_color", type:"color"});
+	pen_color.change(function(){
+		var color = pen_color.val();
+		console.log("Changing pen color to " + color);
+		layer.canvas.freeDrawingBrush.color = color;
+	})
+	ab.append(pen_color);
 }
 
 function standard_options(){
@@ -77,22 +87,4 @@ function color_options(){
         	break;
     }
 	
-}
-
-function update_shape_tool(){
-	var so = $("#shape_options");
-	so.empty();
-	switch($("#selected_shape").val()){
-        case "Circle":
-        	so.append("radius:")
-            so.append($("<input>", {name:"radius", type:"number", value:1, min:0, width:50}));		//Size
-            break;
-        case "Rectangle":
-        case "Triangle":
-        	so.append("height:")
-            so.append($("<input>", {name:"height", type:"number", value:1, min:0, width:50}));		//Height
-        	so.append("width:")
-            so.append($("<input>", {name:"width", type:"number", value:1, min:0, width:50}));		//Width
-            break;
-    }
 }
