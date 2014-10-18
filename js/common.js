@@ -18,7 +18,7 @@
 
 			var $usersIconWrap = $(this).find('.usersIconWrap');
 
-			$imgUser.appendTo($usersIconWrap);
+			// $imgUser.appendTo($usersIconWrap);
 
 			var fireUsers = fire.child('users');
 

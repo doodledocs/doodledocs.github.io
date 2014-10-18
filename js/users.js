@@ -52,6 +52,7 @@ $(document).ready(function() {
 	// Get users
 	setTimeout(function(){
 		fireUsers.on('value', function(snapshot){
+			console.log('changed layers');
 			getUsers(snapshot);
 		});
 	}, 500);
@@ -80,15 +81,16 @@ function getUsers(snapshot, fireUsers) {
 		firstTimeUsers = false;
 		var users = snapshot.val();
 		
-		if (users == null){
-			firstTimeUsers = true;
-			setTimeout(function(){
-				fireUsers.on('value', function(snapshot){
-					getUsers(snapshot);
-				});
-			}, 500);
-		} else {
-			$('usersIconWrap img').remove();
+		// if (users == null){
+		// 	firstTimeUsers = true;
+		// 	setTimeout(function(){
+		// 		fireUsers.on('value', function(snapshot){
+		// 			getUsers(snapshot);
+		// 		});
+		// 	}, 500);
+		// } else {
+			var $imgs = $('.usersIconWrap').html("");
+
 			$.each(users ,function(index, user){
 				
 				var curUsername = user.username;
@@ -114,7 +116,7 @@ function getUsers(snapshot, fireUsers) {
 					// }
 				// }
 			});
-		}
+		// } 
 	// }
 }
 
