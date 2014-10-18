@@ -1,13 +1,17 @@
 "use strict";
 
 (function(){
-	var color = "000000";
 	var tool = null;
 	var layers = null;
 
 	window.addEventListener("load", function (){
 		layers = new Layers();
 		layers.createLayer();
+
+		// $("input[name='tool'][value='brush']").on("select", )
+		// $("input[name='tool'][value='crop']").on("select", )
+		$("input[name='tool'][value='shape']").change(shapes_toolclick);
+		$("input[name='tool'][value='text']").change(text_toolclick);
 		testing();
 	});
 
@@ -18,13 +22,12 @@
 		// makeCircle(canvas,200,100,15,'blue');
 		// makeTriangle(canvas,150,30,20,20,'green');
 		makeText(canvas, 20, 20, "brown", 13, "Hello World", "Arial", "bold", 0.5);
-		shapes_toolclick(canvas);
-		var ab = $("#actionbar");
-		ab.append($("<button>", {id:"test_button"}));
+		// shapes_toolclick(canvas);
+		$("body").append($("<button>", {id:"test_button"}));
 		$("#test_button").click(function(){
-			makeShape(canvas);
+			makeText(canvas, getOptions());
 		});
-		getOptions();
+		// getOptions();
 	}
 
 

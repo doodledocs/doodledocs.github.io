@@ -21,6 +21,12 @@ function getOptions(){
         options["height"] = $('[name="height"]').val();
         options["width"] = $('[name="width"]').val();
     }
+    if($("#font_selection").val() != undefined){
+        options["fontFamily"] = $("#font_selection").val();
+    }
+    if($("#fontstyle_selection").val() != undefined){
+       options["fontStyle"] = $("#fontstyle_selection").val();
+    }
 
     console.log(options);
     return options;
@@ -89,19 +95,11 @@ function makeImage(layer, image){
 
 }
 
-function makeText(layer, left, top, fill, size, string, fontFamily, style, opacity){
-    fill = typeof fill !== 'undefined' ? fill : null;
-    opacity = typeof opacity !== 'undefined' ? opacity : 1.0;
-    
-    var text = new fabric.Text(string, {
-        left: left,
-        top: top,
-        fill: fill,
-        fontFamily: fontFamily,
-        fontSize: size,
-        fontStyle: style,
-        opacity: opacity
-    });
+function makeText(layer, string, options){
+    string = "Noob";
+    options["left"] = 200;
+    options["top"] = 50;
+    var text = new fabric.Text(string, options);
     layer.add(text);
     setEvents(text);
 }
