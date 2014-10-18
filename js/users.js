@@ -7,11 +7,17 @@ $(document).ready(function() {
 
 	fireUsers = fire.child('users');
 
-	fireUser = fire.child(uuid);
-
 	fireUsers.set({
-		'name': uuid
+		uuid: {
+			
+		}
 	});
+
+	// fireUser = fire.child(uuid);
+
+	// fireUsers.set({
+	// 	'name': uuid
+	// });
 
 });
 
