@@ -23,6 +23,10 @@ html, body {
 	list-style: none;
 }
 
+#tools img:hover{
+	cursor: pointer;
+}
+
 #tools{
 	float:left;
 	width: 35px;
