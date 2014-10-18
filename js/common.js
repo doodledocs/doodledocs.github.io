@@ -1,7 +1,7 @@
 "use strict";
-
+var layers = null;
 (function(){
-	var layers = null;
+	// var layers = null;
 	// window.addEventListener("load", function (){
 	$(document).ready(function(){
 		layers = new Layers();
@@ -27,7 +27,7 @@
 			fireCurUser.update({
 				layer : layerID
 			});
-
+			layers.currentLayer.layerID = layerID;
 
 		});
 		layers.currentLayer = layers.createLayer();

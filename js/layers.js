@@ -9,7 +9,7 @@ var Layers = function(){
 		layer.layerName = "layer" + this.layerNum;
 		this.layerNum++;
 		
-		// layer.layerID = layerID;
+		layer.layerID = layerID;
 
 		//Create native canvas
 		var canvas = $("<canvas>", {"id":layer.layerName});
