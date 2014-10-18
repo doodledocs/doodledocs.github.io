@@ -1,7 +1,7 @@
 "use strict";
-
+var layers = null;
 (function(){
-	var layers = null;
+	// var layers = null;
 	// window.addEventListener("load", function (){
 	$(document).ready(function(){
 		layers = new Layers();
@@ -18,7 +18,7 @@
 
 			var $usersIconWrap = $(this).find('.usersIconWrap');
 
-			$imgUser.appendTo($usersIconWrap);
+			// $imgUser.appendTo($usersIconWrap);
 
 			var fireUsers = fire.child('users');
 
@@ -27,8 +27,7 @@
 			fireCurUser.update({
 				layer : layerID
 			});
-
-			// layers.currentLayer = layers.createLayer(layerID);
+			layers.currentLayer.layerID = layerID;
 
 		});
 		layers.currentLayer = layers.createLayer();
@@ -40,16 +39,20 @@
 					brush_toolclick(layers.currentLayer);
 					break;
 				case "text":
+					layers.currentLayer.canvas.isDrawingMode = false;
 					text_toolclick(layers.currentLayer);
 					break;
 				case "shape":
+					layers.currentLayer.canvas.isDrawingMode = false;
 					shape_click(layers);
 					shapes_toolclick(layers.currentLayer);
 					break;
 				case "eraser":
+					layers.currentLayer.canvas.isDrawingMode = false;
 					erase_toolclick(layers.currentLayer);
 					break;
 				case "filters":
+					layers.currentLayer.canvas.isDrawingMode = false;
 					filters_toolclick(layers.currentLayer);
 					break;
 			}

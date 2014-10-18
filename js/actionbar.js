@@ -54,9 +54,10 @@ function brush_toolclick(layer){
 
 	//Drawing mode
 	var toggle = $("<button>", {id:"toggleDrawingMode"});
-	toggle.html("Toggle Drawing Mode");
+	toggle.html("Drawing Mode " + ((layer.canvas.isDrawingMode) ? "On" : "Off" ));
 	toggle.on("click", function(){
-		toggleDrawingMode(layer);
+	    layer.canvas.isDrawingMode = !layer.canvas.isDrawingMode;
+	    toggle.html("Drawing Mode " + ((layer.canvas.isDrawingMode) ? "On" : "Off" ));
 	});
 	ab.append(toggle);
 
