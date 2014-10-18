@@ -10,7 +10,8 @@ html, body {
 }
 
 #linkUpload {
-	float:left;
+	position:fixed;
+	bottom:0px;
 }
 
 #pushNotify {
