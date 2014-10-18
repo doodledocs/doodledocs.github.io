@@ -60,7 +60,7 @@ function setEvents(object) {
 	var events = ["modified", "selected", "moving", "scaling", "rotating", "added", "removed"];
 	for (var event in events) {
 		object.on(events[event], function() {
-			console.log('selected a rectangle');
+            console.log(object);
 		});
 	}
 }
@@ -73,6 +73,7 @@ function makeCircle(layer, options){
     layer.add(circle);
     setEvents(circle);
 }
+
 
 function makeTriangle(layer, options){
     options["left"] = 200;
@@ -91,8 +92,24 @@ function makeLine(){
 
 }
 
-function makeImage(layer, image){
+function addImageFromUrl(layer, url) {
+    fabric.Image.fromURL(url, function(oImg) {
+      layer.add(oImg);
+    });
+}
 
+function uploadImage(canvas) {
+    var imageLoader = document.getElementById('imageLoader');
+    imageLoader.addEventListener('change', handleImage, false);
+
+    function handleImage(e){
+        var reader = new FileReader();
+        reader.onload = function(event){
+            var img = new Image();
+            addImageFromUrl(canvas, event.target.result);
+        }
+        reader.readAsDataURL(e.target.files[0]);     
+    }
 }
 
 function makeText(layer, string, options){
