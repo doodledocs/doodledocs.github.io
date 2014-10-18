@@ -1,7 +1,7 @@
 var Layers = function(){
 	this.layerNum = 1;
 	this.currentLayer = null;
-	this.layersList = [];
+	this.layersList = {};
 
 	this.createLayer = function(layerID){
 		var layer = new Layer();
@@ -24,7 +24,7 @@ var Layers = function(){
 		});
 
 
-		this.layersList.push(layer.canvas);
+		this.layersList[layer.layerID] = layer.canvas;
 		this.currentLayer = layer;
 		console.log(layer.canvas);
 		//Send layer to firebase

@@ -108,6 +108,11 @@ var layers = null;
 
 		console.log(eObj);
 		console.log(eLayerID);
+
+		// layers.currentLayer.canvas.loadFromJSON(eObj);
+		var canvas = new fabric.Canvas();
+
+		layers.layerList[eLayerID] = canvas.loadFromJSON(eObj);
 	});
 
 
