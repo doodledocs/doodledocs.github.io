@@ -99,7 +99,16 @@ var layers = null;
 	}
 
 
+	var fEvents = fire.child('events');
 
+	fEvents.on('child_added', function(snapshot) {
+		var eventE = snapshot.val();
+		var eObj = eventE.object;
+		var eLayerID = eventE.layerID;
+
+		console.log(eObj);
+		console.log(eLayerID);
+	});
 
 
 })();

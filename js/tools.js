@@ -125,11 +125,13 @@ function setEvents(object) {
 
             console.log(layers.currentLayer.layerID);
 
-            fire.child('events');
+            var fEvents = fire.child('events');
 
-            fire.push({
+            var jsonBlah = JSON.stringify(layers.currentLayer.canvas);
+
+            fEvents.push({
                 'layerID' :  currentLayerID,
-                'object' : object
+                'object' : jsonBlah
             })
 		});
 	}
