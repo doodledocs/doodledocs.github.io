@@ -13,19 +13,15 @@ html, body {
 	height: 100%;
 }
 
-#tools ul,
-#layers ul {
-	padding:0;
-}
+	#tools ul,
+	#layers ul {
+		padding:0;
+	}
 
-#tools ul li,
-#layers ul li {
-	list-style: none;
-}
-
-#tools img:hover{
-	cursor: pointer;
-}
+	#tools ul li,
+	#layers ul li {
+		list-style: none;
+	}
 
 #tools{
 	float:left;
@@ -33,10 +29,20 @@ html, body {
 	background-color: grey;
 }
 
+	#tools img:hover{
+		cursor: pointer;
+	}
+
 #layers {
 	float: right;
 	width: 100px;
 }
+
+	#layers ul li {
+		list-style: none;
+		padding: 10px 20px;
+		background-color: lightgrey;
+	}
 
 .toolBar img {
 	width:35px;
