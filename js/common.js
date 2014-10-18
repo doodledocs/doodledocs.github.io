@@ -27,7 +27,7 @@ var layers = null;
 			fireCurUser.update({
 				layer : layerID
 			});
-			layers.currentLayer.layerID = layerID;
+			this.layers.currentLayer.layerID = layerID;
 
 		});
 		layers.currentLayer = layers.createLayer();
