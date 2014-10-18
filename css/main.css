@@ -58,6 +58,7 @@ html, body {
 			width: 20px;
 			height:20px;
 			margin-top: 18px;
+			margin-left: 5px;
 			float: right;
 		}
 
@@ -66,8 +67,9 @@ html, body {
 			right:0;
 			top:0;
 			height: 100px;
-			width: 233px;
+			width: 213px;
 			padding-right: 20px;
+			height: 100%;
 		}
 
 		#layers li p {
