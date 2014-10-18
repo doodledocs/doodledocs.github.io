@@ -16,7 +16,6 @@ var Layers = function(){
 		
 		console.log($layer);
 		//Send layer to firebase
-		setEvents(canvas);
 		return $layer;
 	}	
 
@@ -36,14 +35,17 @@ var Layers = function(){
 		alert("Need to implement updateLater");
 	}
 
-	function setEvents(canvas) {
+	function setEvents(object) {
 		var events = ["object:modified", "object:selected", "object:moving", "object:scaling", "object:rotating", "object:added", "object:removed"];
-		for (var event in events) {
+		rect.on('selected', function() {
+			console.log('selected a rectangle');
+		});
+		/*for (var event in events) {
 			canvas.on(events[event], function(options) {
 				console.log('testing');
 			});		
 
-		}
+		}*/
 
 /*		canvas.on('object:modified', function(options) {
 			console.log(options.e.clientX, options.e.clientY);
