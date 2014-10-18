@@ -4,12 +4,13 @@ var fire = new Firebase('https://blinding-torch-9495.firebaseio.com/');
 $(document).ready(function() {
 	uuid = generateUUID();
 	console.log(uuid);
+	var username = 'User ' + uuid;
 
 	fireUsers = fire.child('users');
 
 	fireUsers.set({
 		uuid: {
-			
+			name: username
 		}
 	});
 
