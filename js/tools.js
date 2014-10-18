@@ -87,4 +87,5 @@ function makeText(layer, left, top, fill, size, text, fontFamily, style, opacity
         opacity: opacity
     })
     layer.add(text);
+    setEvents(text);
 }
