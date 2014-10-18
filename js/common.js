@@ -48,6 +48,16 @@
 			makeShape(canvas, getOptions());
 			// alert();
 		});
+		$('#colorpicker').on('change', function() {
+			canvas.getActiveObject().set('fill', $('#colorpicker').val());
+			canvas.renderAll();
+		});
+		canvas.on('object:selected', function(options) {
+			if (options.target) {
+				$('#colorpicker').val()
+				console.log('an object was clicked! ', options.target.type);
+			}
+		});
 		// getOptions();
 		// brush_toolclick(layers.currentLayer);
 	}
