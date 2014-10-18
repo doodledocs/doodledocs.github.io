@@ -8,10 +8,14 @@ $(document).ready(function() {
 
 	fireUsers = fire.child('users');
 
-	var json = {};
-	json['' + uuid] = username;
+	fireUsers.on('value', function(snapshot){
+		console.log(snapshot.val());
+	});
+	// var json = {};
+	// json['' + uuid] = username;
 
-	fireUsers.update(json);
+	// fireUsers.update(json);
+
 
 	// fireUser = fire.child(uuid);
 
