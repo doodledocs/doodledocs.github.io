@@ -1,13 +1,20 @@
 var Layers = function(){
 	this.layerNum = 1;
+	this.layersList = [];
 
 	this.createLayer = function(){
 		var name = "layer" + this.layerNum;
 		this.layerNum++;
-		var $layer = $("<canvas>", {"id":name, "width":800, "height":600});
-		$("#layers").append($layer);
-
+		//Create native canvas
+		var canvas = $("<canvas>", {"id":name});
+		$("#layers").append(canvas);
+		//Create fabricjs wrapper
+		var $layer = new fabric.Canvas(name);
+		
+		console.log($layer);
 		//Send layer to firebase
+
+		return $layer;
 	}	
 
 	this.getLayers = function(){
