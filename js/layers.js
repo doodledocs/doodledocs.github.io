@@ -11,6 +11,7 @@ var Layers = function(){
 		$("#canvasWrap").append(canvas);
 		//Create fabricjs wrapper
 		var $layer = new fabric.Canvas(name);
+		$layer.setDimensions({"height":600,"width":750});
 		this.layersList.push($layer);
 		this.currentLayer = $layer;
 		
