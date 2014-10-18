@@ -32,27 +32,30 @@ function getOptions(){
     return options;
 }
 
-function makeShape(layer){
+function makeShape(canvas){
     // console.log($("#selected_shape").val());
     switch($("#selected_shape").val()){
         case "Circle":
-            makeCircle(layer, getOptions());
+            makeCircle(canvas, getOptions());
             break;
         case "Triangle":
-            makeTriangle(layer, getOptions());
+            makeTriangle(canvas, getOptions());
             break;
         case "Rectangle":
-            makeRect(layer, getOptions());
+            makeRect(canvas, getOptions());
     }
 }
 
 
-function makeRect(layer, options){
+function makeRect(canvas, options){
     options["left"] = 200;
     options["top"] = 100;
+    options["height"] = 110;
+    options["width"] = 210;
+
     console.log(options);
     var rect = new fabric.Rect(options);
-    layer.add(rect);
+    canvas.add(rect);
     setEvents(rect);
 }
 
@@ -65,36 +68,28 @@ function setEvents(object) {
 	}
 }
 
-function makeCircle(layer, options){
+function makeCircle(canvas, options){
     options["left"] = 100;
     options["top"] = 50;
     console.log(options);
     var circle = new fabric.Circle(options);
-    layer.add(circle);
+    canvas.add(circle);
     setEvents(circle);
 }
 
 
-function makeTriangle(layer, options){
+function makeTriangle(canvas, options){
     options["left"] = 200;
     options["top"] = 50;
     console.log(options);
     var triangle = new fabric.Triangle(options);
-    layer.add(triangle);
+    canvas.add(triangle);
     setEvents(triangle);
 }
 
-function makePolygon(){
-
-}
-
-function makeLine(){
-
-}
-
-function addImageFromUrl(layer, url) {
+function addImageFromUrl(canvas, url) {
     fabric.Image.fromURL(url, function(oImg) {
-      layer.add(oImg);
+      canvas.add(oImg);
     });
 }
 
@@ -112,11 +107,11 @@ function uploadImage(canvas) {
     }
 }
 
-function makeText(layer, string, options){
+function makeText(canvas, string, options){
     string = "Noob";
     options["left"] = 200;
     options["top"] = 50;
     var text = new fabric.Text(string, options);
-    layer.add(text);
+    canvas.add(text);
     setEvents(text);
 }

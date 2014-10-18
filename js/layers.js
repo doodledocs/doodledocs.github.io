@@ -4,21 +4,26 @@ var Layers = function(){
 	this.layersList = [];
 
 	this.createLayer = function(){
-		var name = "layer" + this.layerNum;
+		var layer = new Layer();
+
+		layer.layerName = "layer" + this.layerNum;
 		this.layerNum++;
+
 		//Create native canvas
-		var canvas = $("<canvas>", {"id":name});
+		var canvas = $("<canvas>", {"id":layer.layerName});
 		$("#canvasWrap").append(canvas);
+
 		//Create fabricjs wrapper
-		var $layer = new fabric.Canvas(name);
-		$layer.setDimensions({"height":600,"width":750});
-		this.layersList.push($layer);
-		this.currentLayer = $layer;
-		
-		console.log($layer);
+		layer.canvas = new fabric.Canvas(layer.layerName);
+		layer.canvas.setDimensions({"height":600,"width":750});
+
+
+		this.layersList.push(layer.canvas);
+		this.currentLayer = layer;
+		console.log(layer.canvas);
 		//Send layer to firebase
-		return $layer;
-	}	
+		return layer;
+	}
 
 	this.getLayers = function(){
 		//Pull in layers from firebase
@@ -30,11 +35,21 @@ var Layers = function(){
 		alert("Need to implement deleteLayer");
 	}
 
-	this.updateLater = function(){
+	this.updateLayer = function(){
 		//Update a layer
 		//This function should be called by any action and should update firebase
 		alert("Need to implement updateLater");
 	}
+
+	this.changeLayers = function(newLayer){
+
+	}
+}
+
+var Layer = function (){
+	this.layerName = null;
+	this.layerID = null;
+	this.canvas = null;
 }
 
 
