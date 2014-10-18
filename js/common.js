@@ -28,7 +28,6 @@
 				layer : layerID
 			});
 
-			// layers.currentLayer = layers.createLayer(layerID);
 
 		});
 		layers.currentLayer = layers.createLayer();
@@ -40,16 +39,20 @@
 					brush_toolclick(layers.currentLayer);
 					break;
 				case "text":
+					layers.currentLayer.canvas.isDrawingMode = false;
 					text_toolclick(layers.currentLayer);
 					break;
 				case "shape":
+					layers.currentLayer.canvas.isDrawingMode = false;
 					shape_click(layers);
 					shapes_toolclick(layers.currentLayer);
 					break;
 				case "eraser":
+					layers.currentLayer.canvas.isDrawingMode = false;
 					erase_toolclick(layers.currentLayer);
 					break;
 				case "filters":
+					layers.currentLayer.canvas.isDrawingMode = false;
 					filters_toolclick(layers.currentLayer);
 					break;
 			}

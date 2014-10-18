@@ -49,7 +49,6 @@ function shape_click(layers){
 function prepareFilter(layer){
     var filter = $("#filter_type").val();
     console.log("Applying: " + filter);
-    var filter = null;
     switch(filter){
         case "Sepia":
             filter = new fabric.Image.filters.Sepia({
@@ -64,7 +63,7 @@ function prepareFilter(layer){
             break;
         case "Pixelate":
             filter = new fabric.Image.filters.Pixelate({
-                blocksize: 100
+                blocksize: 8
             });
             break;
     }
@@ -73,10 +72,15 @@ function prepareFilter(layer){
 
 function applyFilter(layer, filter){
     var object = layer.canvas.getActiveObject();
-    console.log(object);
-    object.filters.push(filter);
-    object.applyFilters(layer.canvas.renderAll.bind(layer.canvas));
-    layer.canvas.add(object);
+    if(object != undefined){
+        console.log(object);
+        object.filters.push(filter);
+        object.applyFilters(layer.canvas.renderAll.bind(layer.canvas));
+        layer.canvas.add(object);
+    } else {
+        alert("Please select an image in order to use a filter.");
+    }
+
 }
 
 function makeShape(canvas, posX, posY){
@@ -127,12 +131,6 @@ function makeCircle(canvas, options){
     var circle = new fabric.Circle(options);
     canvas.add(circle);
     setEvents(circle);
-}
-
-function toggleDrawingMode(layer){
-    var toggle = !layer.canvas.isDrawingMode;
-    console.log("Drawing mode: " + toggle);
-    layer.canvas.isDrawingMode = toggle;
 }
 
 function makeTriangle(canvas, options){
