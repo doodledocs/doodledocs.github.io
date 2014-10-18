@@ -66,7 +66,6 @@ function popup(canvas) {
             uploadImage(canvas, modal);
             $('#imageUrl').click(function() { 
                 addImageFromUrl(canvas, $('#url').val());
-
                 modal.close();
             });
         });
@@ -84,6 +83,7 @@ function setEvents(object) {
 	var events = ["modified", "selected", "moving", "scaling", "rotating", "added", "removed"];
 	for (var event in events) {
 		object.on(events[event], function() {
+            console.log("ginos a jew");
             console.log(object);
 		});
 	}
@@ -111,7 +111,12 @@ function makeTriangle(canvas, options){
 
 function addImageFromUrl(canvas, url) {
     fabric.Image.fromURL(url, function(oImg) {
-      canvas.add(oImg);
+        var diff = Math.min(canvas.height - oImg.height, canvas.width - oImg.width);
+        if (diff < 0) {
+            var percent = Math.min(canvas.width / oImg.width, canvas.height / oImg.height);
+            oImg.scale(percent);
+        }
+        canvas.add(oImg);
     });
 }
 
