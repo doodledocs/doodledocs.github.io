@@ -13,7 +13,7 @@ $(document).ready(function() {
 	var json = {};
 	json['' + uuid] = {
 		name : username,
-		layer : 2;
+		layer : 2
 	};
 	fireUsers = fire.child('users');
 	fireUsers.update(json);
