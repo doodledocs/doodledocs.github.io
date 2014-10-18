@@ -63,6 +63,10 @@ html, body {
 		position: relative;
 	}
 
+		#layers ul li.selected {
+			background-color: grey;
+		}
+
 
 		#layers a {
 			display: block;

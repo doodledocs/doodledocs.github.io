@@ -46,11 +46,27 @@ $(document).ready(function() {
 	fireUsers.update(json);
 
 	// Get users
-	fireUsers.on('value', function(snapshot){
-		if (firstTimeUsers) {
-			firstTimeUsers = false;
-			var users = snapshot.val();
-			
+	setTimeout(function(){
+		fireUsers.on('value', function(snapshot){
+			getUsers(snapshot);
+		});
+	}, 300);
+
+});
+
+function getUsers(snapshot, fireUsers) {
+	if (firstTimeUsers) {
+		firstTimeUsers = false;
+		var users = snapshot.val();
+		
+		if (users == null){
+			firstTimeUsers = true;
+			setTimeout(function(){
+				fireUsers.on('value', function(snapshot){
+					getUsers(snapshot);
+				});
+			}, 300);
+		} else {
 			$.each(users ,function(index, user){
 				var curUsername = user.username;
 
@@ -60,14 +76,20 @@ $(document).ready(function() {
 					$img.attr('src', 'img/ppl/purple_person.png');
 					$img.attr('alt', uuid);
 
-					var $curULayerBar = $('.layerBar[data-layerid="' + curULayer + '"] .usersIconWrap');
-					$curULayerBar.append($img);
+					var $curULayerBarIcons = $('.layerBar[data-layerid="' + curULayer + '"] .usersIconWrap');
+					
+
+					if (index == uuid){
+						var $curULayerBar = $('.layerBar[data-layerid="' + curULayer + '"]');
+						$curULayerBar.addClass('selected');
+					}
+
+					$curULayerBarIcons.append($img);
 				// }
 			});
 		}
-	});
-
-});
+	}
+}
 
 // fire.on('child_added', function(snapshot) {
 // 	var message = snapshot.val();
