@@ -17,6 +17,17 @@ function makeCircle(layer, left, top, radius, fill){
 	  radius: radius
 	});
 	layer.add(circle);
+	setEvents(circle);
+
+}
+
+function setEvents(object) {
+	var events = ["modified", "selected", "moving", "scaling", "rotating", "added", "removed"];
+	for (var event in events) {
+		object.on(events[event], function() {
+			console.log('selected a rectangle');
+		});
+	}
 }
 
 function makeTriangle(){
