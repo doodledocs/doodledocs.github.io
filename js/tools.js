@@ -60,11 +60,11 @@ function makeImage(layer, image){
 
 }
 
-function makeText(layer, left, top, fill, size, text, fontFamily, style, opacity){
+function makeText(layer, left, top, fill, size, string, fontFamily, style, opacity){
     fill = typeof fill !== 'undefined' ? fill : null;
     opacity = typeof opacity !== 'undefined' ? opacity : 1.0;
     
-    var text = fabric.Text({
+    var text = new fabric.Text(string, {
         left: left,
         top: top,
         fill: fill,
@@ -72,6 +72,6 @@ function makeText(layer, left, top, fill, size, text, fontFamily, style, opacity
         fontSize: size,
         fontStyle: style,
         opacity: opacity
-    })
+    });
     layer.add(text);
 }
