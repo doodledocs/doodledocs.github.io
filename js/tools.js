@@ -1,4 +1,4 @@
-function getOptions(){
+function getOptions(posX, posY){
     var ab = $("#actionbar");
     options = {};
     if($('[name="size"]').val() > 0){
@@ -16,10 +16,10 @@ function getOptions(){
         console.log($("#colorpicker").val());
     }
     if($("#selected_shape").val() == "Circle"){
-        options["radius"] = $('[name="radius"]').val();
+        options["radius"] = 50;
     } else if($("#selected_shape").val() == "Triangle" || $("#selected_shape").val() == "Rectangle"){
-        options["height"] = $('[name="height"]').val();
-        options["width"] = $('[name="width"]').val();
+        options["height"] = 100;
+        options["width"] = 100;
     }
     if($("#font_selection").val() != undefined){
         options["fontFamily"] = $("#font_selection").val();
@@ -27,22 +27,35 @@ function getOptions(){
     if($("#fontstyle_selection").val() != undefined){
        options["fontStyle"] = $("#fontstyle_selection").val();
     }
+    options["left"] = posX - 100;
+    options["top"] = posY - 100;
 
     console.log(options);
     return options;
 }
 
-function makeShape(canvas){
-    // console.log($("#selected_shape").val());
+function shape_click(layers){
+    layers.currentLayer.canvas.on('mouse:down', function(options) {
+            var posX = options.e.clientX;
+            var posY = options.e.clientY;
+            console.log(posX, posY);
+            console.log(options.target);
+            if(options.target == undefined){
+                makeShape(layers.currentLayer.canvas, posX, posY);
+            }
+    });
+}
+
+function makeShape(canvas, posX, posY){
     switch($("#selected_shape").val()){
         case "Circle":
-            makeCircle(canvas, getOptions());
+            makeCircle(canvas, getOptions(posX, posY));
             break;
         case "Triangle":
-            makeTriangle(canvas, getOptions());
+            makeTriangle(canvas, getOptions(posX, posY));
             break;
         case "Rectangle":
-            makeRect(canvas, getOptions());
+            makeRect(canvas, getOptions(posX, posY));
     }
 }
 
@@ -61,11 +74,6 @@ function popup(canvas) {
 }
 
 function makeRect(canvas, options){
-    options["left"] = 200;
-    options["top"] = 100;
-    options["height"] = 110;
-    options["width"] = 210;
-
     console.log(options);
     var rect = new fabric.Rect(options);
     canvas.add(rect);
@@ -82,8 +90,6 @@ function setEvents(object) {
 }
 
 function makeCircle(canvas, options){
-    options["left"] = 100;
-    options["top"] = 50;
     console.log(options);
     var circle = new fabric.Circle(options);
     canvas.add(circle);
@@ -97,8 +103,6 @@ function toggleDrawingMode(layer){
 }
 
 function makeTriangle(canvas, options){
-    options["left"] = 200;
-    options["top"] = 50;
     console.log(options);
     var triangle = new fabric.Triangle(options);
     canvas.add(triangle);
