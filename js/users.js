@@ -9,7 +9,7 @@ $(document).ready(function() {
 	fireUsers = fire.child('users');
 
 	var json = {};
-	json[uuid] = uuid;
+	json['' + uuid] = username;
 
 	fireUsers.set({
 		uuid: json
